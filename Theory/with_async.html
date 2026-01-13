@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function one() {
+            console.log("One called...");
+        }
+        function two() {
+            console.log("Two called...");
+        }
+        function three() {
+            setTimeout(() => {
+                console.log("Three called...");
+                four();
+            }, 10);
+
+            // setTimeout(four, 10);
+        }
+        function four() {
+            console.log("Four called...");
+        }
+        function five() {
+            console.log("Five called...");
+        }
+
+        function caller() {
+            one();
+            two();
+            three();
+            five();
+        }
+
+        document.querySelector("#button").addEventListener("click", caller);
+    </script>
+    
+</body>
+</html>

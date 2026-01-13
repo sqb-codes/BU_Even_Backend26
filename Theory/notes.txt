@@ -1,0 +1,101 @@
+Node JS
+- open-source, cross-platform JavaScript runtime environment
+- built on Chrome's V8 JavaScript engine
+- allows execution of JavaScript code outside a web browser which makes it suitable for building scalable server-side applications
+- Non-blocking I/O, event-driven architecture
+- Asynchronous programming model
+
+What is V8 ?
+- JavaScript engine developed by Google
+- It is responsible to take JS and execute in while browsing with Chrome
+- it is written in C++ and is open-source
+- It compiles JavaScript directly to native machine code before executing it, which improves performance significantly
+
+Compilation:
+- We know that JavaScript is an interpreted language, but modern JS engines no longer just interpret code, they also compile it.
+- JS is internally compiled by V8 with JIT (Just In Time) compilation.
+
+What is JIT?
+- JIT compiler is a program that compiles code while a program is running.
+Compilation during execution: JIT compiler compile code while a program is running, rather than before execution.
+- Bytecode to machine code: JIT compiler translates bytecode (intermediate representation of code) into machine code that can be executed directly by the CPU.
+- Performance Optimization: JIT compilers can improve applications runtime performance
+- Dynamic Compilation: JIT compliers allows applications to be compiled at runtime
+
+
+Node JS Pre-requisites:
+- Basics of JavaScript and Data Types
+- Functions and Scope
+- Asynchronous Programming (Callbacks, Promises, Async/Await)
+- Event Loop and Event-Driven Architecture
+- Arrow Functions and ES6+ Features
+- Arrays
+
+
+Asynchronous Programming
+- Timers (setTimeout, setInterval)
+- Callbacks
+- Promises
+- Async/Await
+
+Callbacks
+- Callbacks are used to handle asynchronous operations in JavaScript.
+- We pass callback functions as an argument to another function, which will be executed once the asynchronous operation is complete.
+
+Callback Hell:
+- When multiple asynchronous operations are nested within each other using callbacks, it can lead to deeply nested code that is difficult to read and maintain.
+- This situation is commonly referred to as "callback hell" or "pyramid of doom."
+
+Solutions to Callback Hell:
+Promises: Promises provide a cleaner way to handle asynchronous operations by allowing chaining of .then() methods.
+
+let promise = new Promise((resolve, reject) => {
+    // Asynchronous operation
+    if (success) {
+        resolve(result);
+    } else {
+        reject(error);
+    }
+});
+
+Promises has 4 states:
+1. fullfilled: Action related to the promise succeeded
+2. rejected - Action related to the promise failed
+3. pending - Promise is still pending
+4. settled - Promise has been either fulfilled or rejected
+
+Example of Promise:
+let promise = new Promise(function(resolve, reject) {
+    const x = "hello";
+    const y = "hello";
+    if(x === y) {
+        resolve();
+    } else {
+        reject();
+    }
+});
+
+promise.
+then(function() {
+    console.log('Success, You are a GEEK');
+}).catch(function() {
+    console.log('Some error has occurred');
+});
+
+
+async/await:
+- async/await is a syntactic sugar built on top of Promises, making asynchronous code look and behave more like synchronous code.
+
+async function fetchData() {
+    try {
+        let response = await fetch('https://api.example.com/data');
+        let data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+=================================================
+
+Creating a simple HTTP server in Node.js
