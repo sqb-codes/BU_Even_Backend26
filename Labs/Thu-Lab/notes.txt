@@ -1,0 +1,43 @@
+React
+- JS based UI development library
+- React is a library rather than a language
+- It was introduced in May 2013 by Facebook
+
+Key features:
+1. Component based
+ - React divides web pages into reusable and immutable components
+ - Component-based development simplifies code organization and maintain reusability
+
+2. One Way Data Binding
+- React follows one way data binding, where data flows from Parent component to child component
+
+3. JSX - JavaScript syntax extension / JavaScript XML
+- Combines JS and HTML, allows embedding of JS objects within HTML elements
+
+JavaScript Example:
+const username = "John";
+const element = document.createElement("h2");
+element.style.color = "red";
+element.innerText = "Hello " + username;
+
+JSX:
+const username = "John";
+<h2 style=color:red;>Hello {username}</h2>
+
+4. Virtual DOM
+- Virtual representation of actual DOM
+- React updates the state changes in Virtual DOM and then it sync with Real DOM
+- Virtual DOM is a blueprint of a machine, can do changes in blueprint but those changes will not directly apply to the machine
+
+How Virtual DOM works?
+- In React everything is treated as a component (functional/class)
+- Each component has a state
+- Whenever the state of any component is changed react updates the virtual DOM.
+- React maintains two virtual DOM at each time and contains the updated virtual DOM and which is pre-updated of the newly updated DOM.
+- Then it compares pre-updated version with newly updated DOM and figure out the changes that has to be implemented in actual DOM.
+- This process is known as diffing
+
+The entire process of transforming changes to the real DOM is called Reconcilliation
+
+==================================
+

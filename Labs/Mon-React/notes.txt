@@ -1,0 +1,49 @@
+Introduction to React
+
+- React is a JavaScript library for building user interfaces.
+- It allows developers to create large web applications that can update and render efficiently in response to data changes.
+- React was developed by Facebook and is maintained by Facebook and a community of individual developers and
+
+
+Features:
+- Component-Based: Build encapsulated components that manage their own state., then compose them to make complex UIs.
+- Declarative: in order to build reusable UI components and design simple views for each state in your application.
+- One Way Data Binding - React follows one way data binding where data flows from parent component to the child component
+- Child component cannot return data directly to the parent component but they can communicate with parent to modify states
+- Follows Virtual DOM
+
+Understand DOM first:
+- DOM stands for Document Object Model is a structured representation of the HTML
+- It is represented as a tree data structure
+
+Virtual DOM:
+- React follows Virtual DOM which is a lightweight copy of actual DOM
+- Manipulating DOM in JS is slow as compare to React Virtual DOM
+- Each time there is a change in state of our application, first Virtual DOM gets updated and then compared with actual DOM
+
+Virtual DOM - lightweight copy of actual DOM
+Actual DOM - Actual tree representation of HTML elements
+
+Virtual DOM - Maintained by JS libraries
+Actual DOM - It is maintained by browser
+
+
+JSX - JavaScript XML / JavaScript Syntax Extension
+
+Take JS example:
+const name = "John";
+let h2_tag = document.createElement("h2");
+h2_tag.innerText = "Hello " + name;
+
+
+Take React JSX example:
+const name = "John";
+<h2>Hello {name}</h2>
+
+
+Setup React
+1. Install Node JS
+2. Install vite
+Vite - simple, fast and modern way to build frontend applications
+
+npm create vite@latest first-app
