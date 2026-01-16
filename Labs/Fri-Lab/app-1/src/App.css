@@ -1,0 +1,16 @@
+.products {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    justify-content: center;
+}
+.products li {
+    width: 28%;
+    padding: 20px;
+    box-shadow: 10px 10px 10px 0px rgb(100, 100, 100, 0.4);
+}
+.products li img {
+    width: 50%;
+    max-height: 300px;
+}
