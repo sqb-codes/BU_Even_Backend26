@@ -99,3 +99,45 @@ async function fetchData() {
 =================================================
 
 Creating a simple HTTP server in Node.js
+
+=================================================
+
+Node JS Core modules:
+- fs - File System
+- path
+- os
+- http
+- events
+
+
+fs module:
+- handle file operations:
+ - read file
+ - write file
+ - update file
+ - delete file
+
+Use cases:
+- Logs
+- Config files
+- Data pipelines
+
+
+path module:
+- differnt OS have different path styles
+- windows \
+- Linux/Mac /
+
+path makes your app OS-independent
+
+
+os module:
+- If we need system level information
+- CPU
+- Memory
+- OS type
+- Hostname
+
+http module
+- Allow Node.js to act as a web server
+
