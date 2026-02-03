@@ -11,11 +11,14 @@ export const TaskForm = ({onAdd}) => {
         taskPriority: "Low",
         taskEmp: ""
     });
+    const [taskIdCounter, setTaskIdCounter] = useState(1);
 
     // const [taskTitle, setTaskTitle] = useState();
 
     const taskHandler = (e) => {
         e.preventDefault();
+        setTaskObj({...taskObj, taskId: taskIdCounter});
+        setTaskIdCounter(taskIdCounter + 1);
         // onAdd(taskTitle);
         onAdd(taskObj);
         // console.log(taskData);
@@ -89,9 +92,9 @@ export const TaskForm = ({onAdd}) => {
                     name="taskPriority"
                 >
                     <option value="">Select priority</option>
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
             </div>
 

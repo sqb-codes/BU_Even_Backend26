@@ -13,11 +13,19 @@ function App() {
         console.log("Task Added Successfully...",taskData);
     }
 
+    const deleteTask = (taskId) => {
+        setTaskData(taskData.filter((task) => task.taskId !== taskId));
+        console.log("Task Deleted Successfully...",taskData);
+    }
+
     return (
         <>
             <Header/>
             <TaskForm onAdd={addTask}/>
-            <TaskList taskList={taskData}/>
+            <TaskList 
+                taskList={taskData}
+                onDelete={deleteTask}
+                />
         </>
     )
 }
