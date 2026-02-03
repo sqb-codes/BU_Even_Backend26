@@ -1,0 +1,152 @@
+import { useState } from "react"
+
+export const TaskForm = ({onAdd}) => {
+
+    // const [taskTitle, setTaskTitle] = useState("");
+
+    // const taskTitleHandler = (event) => {
+    //     // event.target.value - will return value of that text box on which event is executed
+    //     // console.log(event.target.value);
+    //     setTaskTitle(event.target.value);
+    // }
+
+
+    const [taskObj, setTaskObj] = useState({
+        taskId: 0,
+        taskTitle: "",
+        taskDesc: "",
+        startDate: "",
+        endDate: "",
+        priority: "",
+        empName: ""
+    });
+
+    const taskChangeHandler = (event) => {
+        // console.log(event.target);
+        const key = event.target.name;
+        const value = event.target.value;
+        setTaskObj({...taskObj, [key]: value});
+    }
+
+    const addTaskHandler = (event) => {
+        event.preventDefault();
+        // alert("Task Added...");
+        // onAdd(taskTitle);
+        onAdd(taskObj)
+    }
+
+    return (
+        <div className="bg-gray-50 py-8 px-4">
+            <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Create New Task</h2>
+                <form onSubmit={addTaskHandler} className="bg-white rounded-lg shadow-md p-6 border border-gray-200">
+                    {/* Task Title */}
+                    <div className="mb-5">
+                        <label htmlFor="taskTitle" className="block text-sm font-semibold text-gray-700 mb-2">
+                            Task Title
+                        </label>
+                        <input 
+                            id="taskTitle"
+                            type="text" 
+                            placeholder="Enter task title" 
+                            name="taskTitle"
+                            onChange={taskChangeHandler}
+                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                            required
+                        />
+                    </div>
+
+                    {/* Task Description */}
+                    <div className="mb-5">
+                        <label htmlFor="taskDescription" className="block text-sm font-semibold text-gray-700 mb-2">
+                            Task Description
+                        </label>
+                        <textarea 
+                            id="taskDescription"
+                            placeholder="Enter detailed task description" 
+                            name="taskDesc"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition resize-none"
+                            rows="4"
+                            onChange={taskChangeHandler}
+                        />
+                    </div>
+
+                    {/* Employee Name */}
+                    <div className="mb-5">
+                        <label htmlFor="employeeName" className="block text-sm font-semibold text-gray-700 mb-2">
+                            Employee Name
+                        </label>
+                        <select 
+                            id="employeeName"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition bg-white"
+                            onChange={taskChangeHandler}
+                            name="empName"
+                        >
+                            <option value="John">John</option>
+                            <option value="Max">Max</option>
+                            <option value="Smith">Smith</option>
+                            <option value="Alex">Alex</option>
+                        </select>
+                    </div>
+
+                    {/* Grid for Dates and Priority */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
+                        {/* Start Date */}
+                        <div>
+                            <label htmlFor="startDate" className="block text-sm font-semibold text-gray-700 mb-2">
+                                Start Date
+                            </label>
+                            <input 
+                                id="startDate"
+                                type="date" 
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                                onChange={taskChangeHandler}
+                                name="startDate"
+                            />
+                        </div>
+
+                        {/* End Date */}
+                        <div>
+                            <label htmlFor="endDate" className="block text-sm font-semibold text-gray-700 mb-2">
+                                End Date
+                            </label>
+                            <input 
+                                id="endDate"
+                                type="date" 
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition"
+                                onChange={taskChangeHandler}
+                                name="endDate"
+                            />
+                        </div>
+
+                        {/* Priority */}
+                        <div>
+                            <label htmlFor="priority" className="block text-sm font-semibold text-gray-700 mb-2">
+                                Priority
+                            </label>
+                            <select 
+                                id="priority"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition bg-white"
+                                onChange={taskChangeHandler}
+                                name="priority"
+                            >
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="critical">Critical</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button 
+                        type="submit"
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-3 px-4 rounded-md transition duration-200 transform hover:scale-105 shadow-md"
+                    >
+                        Add Task
+                    </button>
+                </form>
+            </div>
+        </div>
+    )
+}
