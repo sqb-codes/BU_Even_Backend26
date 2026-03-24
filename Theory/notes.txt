@@ -122,6 +122,36 @@ Use cases:
 - Config files
 - Data pipelines
 
+Two ways to use fs module:
+1. Synchronous (blocking)
+2. Asynchronous (Non-blocking) => Recommended
+
+Sync = Block event loop
+Async = Does not block event loop
+
+
+Event Loop
+- it is like a manager that decides which task should Node js do next...
+
+Event Loop helps Node:
+- to pick next task
+- run callbacks
+- handle async results
+
+It continuously checks for completed async tasks and execute their callbacks, that allows Node.js to run non-blocking code
+
+===========================
+
+Streams
+- collection of data 
+- continuous flow of data
+
+Streams are useful when working with large amount of data, or data that's coming from an external source.
+
+2 Major benefits of using Streams:
+1. Memory efficient: we don't need to load large amount of data in memory
+2. Time efficient: it will take less time to start processing data as soon as you have it, rather than having to wait with processing until the entire data has been loaded.
+
 
 path module:
 - differnt OS have different path styles
@@ -141,3 +171,124 @@ os module:
 http module
 - Allow Node.js to act as a web server
 
+==========================
+
+Events:
+Node.js works on event-driven architecture
+
+Event module we can:
+- create custom events
+- listen to events
+- emit (trigger) events
+
+3 major operations:
+- on() -> listen to event
+- emit() -> trigger event
+- once() -> listen only once
+
+===============================================
+
+Express
+- 3rd party module
+- lightweight web framework built on top of NodeJS that will help you to create APIs and web servers easily
+
+Express will handle:
+1. request parsing
+2. response sending
+3. Routing
+
+Let's create first express server:
+1. npm init -y
+
+HTTP Methods
+GET & POST
+- these method will tell server what you want to do.. ?
+GET - Get Data
+POST - Send Data
+PUT - Update Data
+DELETE - Delete Data
+
+1. GET (Fetch Data)
+
+Status Code:
+200 - OK
+201 - Created
+400 - Bad request
+404 - Not found
+500 - Server error
+
+2. POST (Send Data)
+- When we want:
+- register user
+- login user
+- payment
+
+
+GET vs POST:
+1. Data Location
+    GET - URL
+    POST - Body
+2. Secure
+    GET - No
+    POST - Yes
+3. Browser Support
+    GET - Direct support from browser
+    POST - Need tool like Thunderclient or Postman
+
+
+Route Parameters
+- it will allow you to send values inside the URL path
+
+Example:
+/user/101
+/user/102
+
+Same route but different data
+Mainly used for Resource Identification - REST
+
+REST - Representational State Transfer
+- set of rules used to design web APIs so that different systems can communicate easily over HTTP
+
+REST defines how a client should request data and how a server should respond
+
+
+===============================================
+
+User register and login
+
+Using MVC Architecture
+MVC - Model View Controller
+
+Model - Business Logic
+Controller - Bridge between Model and View
+View - Front-end / What user will View
+
+1. mkdir user_auth
+2. cd user_auth
+3. npm init -y
+4. npm install express mongoose dotenv cors jsonwebtoken bcryptjs
+5. npm install nodemon --save-dev
+6. Project Structure:
+user_auth
+- model
+  - User.js
+- controller
+  - authController.js
+- routes
+  - userRoutes.js
+- utils
+  - generateToken.js
+- middleware
+  - authMiddleware
+- config
+  - db.js
+server.js
+app.js
+.env
+
+
+Open .env and add these variables:
+PORT=9090
+MONGO_USERNAME=put your MongoDB username
+MONGO_PASSWORD=put your MongoDB password
+MONGO_DB_NAME=bu_fsd_auth_db
