@@ -38,8 +38,21 @@ exports.registerUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     try {
+        const {email, password} = req.body;
+        const user = await User.findOne({email});
         
+        if(user && (await bcrypt.compare(password, user.password))) {
+            res.json({
+                message: "Login success",
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+            })
+        }
     } catch (error) {
-        
+        return res.status(500).json({
+                message: "User failed to login",
+                error: error.message
+            })
     }
 }
