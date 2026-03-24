@@ -1,0 +1,61 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.85);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-shell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #18324b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  gap: 3px;
+}
+
+.logo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.brand-text {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 16px;
+}
+
+.site-nav a {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  background: rgba(56, 189, 248, 0.17);
+  color: var(--accent);
+}
