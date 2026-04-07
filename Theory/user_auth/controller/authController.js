@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
+const generateToken = require("../utils/generateToken");
 
 exports.registerUser = async (req, res) => {
     try {
@@ -25,7 +26,8 @@ exports.registerUser = async (req, res) => {
         res.status(201).json({
             _id: user._id,
             name: user.name,
-            email: user.email
+            email: user.email,
+            token: generateToken(user._id)
         })
 
     } catch (error) {
@@ -47,6 +49,7 @@ exports.loginUser = async (req, res) => {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
+                token: generateToken(user._id)
             })
         }
     } catch (error) {
@@ -55,4 +58,8 @@ exports.loginUser = async (req, res) => {
                 error: error.message
             })
     }
+}
+
+exports.getProfile = async (req, res) => {
+    res.json(req.user);
 }
