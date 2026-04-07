@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+// Authentication
 const protect = async(req, res, next) => {
     let token;
     // console.log(req.headers.authorization);
@@ -20,4 +21,20 @@ const protect = async(req, res, next) => {
     }
 };
 
-module.exports = protect;
+// Authorization
+const authorize = (...roles) => {
+    // roles = ["admin"] OR ["admin", "emp"]
+    return (req, res, next) => {
+        // check if user's role is included in allowed roles
+        if(!roles.includes(req.user.role)) {
+            // if role not allowed - forbidden access
+            return res.status(403).json({
+                "message": `Role (${req.user.role}) is not allowed`
+            });
+        }
+        next();
+    }
+}
+
+
+module.exports = {protect, authorize};
