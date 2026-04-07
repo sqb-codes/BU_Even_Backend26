@@ -292,3 +292,32 @@ PORT=9090
 MONGO_USERNAME=put your MongoDB username
 MONGO_PASSWORD=put your MongoDB password
 MONGO_DB_NAME=bu_fsd_auth_db
+
+
+======================
+
+JWT = JSON Web Token
+- secure way to transmit information between client and server
+
+Mainly we use it for:
+- Authentication (login systems)
+- Authroization (protected routes)
+
+How it works - Flow:
+1. User Login
+- User send email + password
+- Server validate credentials
+- Server generates JWT
+
+2. Token sent to client
+3. Client stores token - Localstorage / Cookies
+4. Client sends token in requests
+Authroization: Bearer <Token>
+5. Middleware Verifies Token
+jwt.verify(token, process.env.JWT_SECRET);
+If valid: Access granted
+If invalid: Access denied
+
+
+
+
